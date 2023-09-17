@@ -98,8 +98,10 @@ while True:
         for i in perm:
          contador+=1
          print(i)
-        print(f"Permutaciones Generadas: {contador}")
+        print(f"Permutaciones metodo propio:  {contador}")
         contador=0
+        print("Permutaciones Generadas por Libreria Permutations")
+        permLib=calcular.generarPerLibreria(n, r)
         
     elif opcion =='10':
         print("Combinaciones")
@@ -108,8 +110,9 @@ while True:
         for i in combi:
          print(i)
          contador+=1
-        print(f"Combinaciones Generadas: {contador}")
+        print(f"Combinaciones Generada metodo propio : {contador}")
         contador=0
+        combL=calcular.generarCombLibreria(n, r)
         
     elif opcion == '11':
         print("Saliendo del programa. ¡Hasta luego!")

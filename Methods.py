@@ -15,6 +15,7 @@ Created on Sat Sep 16 11:13:05 2023
      nCr= nPr/r!
      
 '''
+from itertools import permutations, combinations
 import numpy as np
 import math
 import random
@@ -187,7 +188,14 @@ class MathSolver:
                     permuta.append(i)
                     yield from MathSolver.generarPermuta(n, r, permuta)
                     permuta.pop()
-                    
+    @staticmethod  
+    def generarPerLibreria(n,r):
+        # Genera las permutaciones con la libreria permutations
+        permuta=list(permutations(n,r))
+        for i in permuta:
+            print(i)
+        print()
+        return permuta
     @staticmethod
     def generarCombina(n, r, combi=[], i=0):
         if len(combi) == r:
@@ -199,5 +207,10 @@ class MathSolver:
         yield from MathSolver.generarCombina(n, r, combi, i + 1)
         combi.pop()
         yield from MathSolver.generarCombina(n, r, combi, i + 1)
+    @staticmethod 
+    def generarCombLibreria(n,r):
+        combiL=list(combinations(n,r))
+        print(combiL)
+        
         
    
