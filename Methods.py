@@ -212,5 +212,29 @@ class MathSolver:
         combiL=list(combinations(n,r))
         print(combiL)
         
+    '''
+    ??. Encontra el máximo y el mínimo de una lista Verion 1
+    '''
+    def max_minV1():
+        n = int(input("Ingrese la cantidad de números en la lista: "))
+        lista = []
+
+        for i in range(n):
+         num = int(input(f"Ingrese el número {i + 1}: "))
+         lista.append(num)
+
+        maximo = lista[0]
+        minimo = lista[0]   
+
+        for i in range(1, len(lista)):
+            if lista[i] > maximo:
+                maximo = lista[i]
+            if lista[i] < minimo:
+                minimo = lista[i]
+        print(f"El número máximo es: {maximo}")
+        print(f"El número mínimo es: {minimo}")
+
+    max_minV1()
+
         
-   
+        
