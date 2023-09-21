@@ -213,7 +213,7 @@ class MathSolver:
         print(combiL)
         
     '''
-    ??. Encontra el máximo y el mínimo de una lista Verion 1
+    ??. Encontra el máximo y el mínimo de una lista 
     '''
     def max_minV1():
         n = int(input("Ingrese la cantidad de números en la lista: "))
@@ -236,5 +236,21 @@ class MathSolver:
 
     max_minV1()
 
+    '''
+    ??. Encontra el valor de la suma maxima de dos valores consecutivos V1
+    '''
+    def max_sum_consecutive(nums):
+    
+        max_sum = current_sum = nums[0]
+        for i in range(1, len(nums)):
+            current_sum += nums[i]
+            if current_sum > max_sum:
+                max_sum = current_sum
+        current_sum -= nums[i-1]
+        return max_sum
+    input_values = input("Ingrese los valores de la lista separados por espacios: ")
+    nums = [int(x) for x in input_values.split()]
+    result = max_sum_consecutive(nums)
+    print("La suma máxima de elementos consecutivos es:", result)
         
         
