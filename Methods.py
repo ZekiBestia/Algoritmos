@@ -226,7 +226,7 @@ print("Los dos números consecutivos más grandes son:", resultado)
         
     '''
     ??. Encontra el máximo y el mínimo de una lista 
-    '''
+   
     def max_minV1():
         n = int(input("Ingrese la cantidad de números en la lista: "))
         lista = []
@@ -248,9 +248,9 @@ print("Los dos números consecutivos más grandes son:", resultado)
 
     max_minV1()
 
-    '''
+   
     ??. Encontra el valor de la suma maxima de dos valores consecutivos V1
-    '''
+    
     def max_sum_consecutive(nums):
     
         max_sum = current_sum = nums[0]
@@ -264,5 +264,7 @@ print("Los dos números consecutivos más grandes son:", resultado)
     nums = [int(x) for x in input_values.split()]
     result = max_sum_consecutive(nums)
     print("La suma máxima de elementos consecutivos es:", result)
+    '''   
+        
         
         
