@@ -129,28 +129,46 @@ class MathSolver:
       6.Dos numeros grandes consecutivos de una lista
     '''
     @staticmethod
-    def numeros_consecutivos(lista):
+    def dos_numeros_mas_grandes_consecutivos(lista):
         if len(lista) < 2:
-             return None
+            return "La lista es demasiado corta para encontrar dos números consecutivos."
 
         max1 = max2 = float('-inf')
+        max_general = float('-inf')
+        consecutivos_encontrados = False  # pone un indicador para ver si hay números consecutivos
 
         for i in range(len(lista) - 1):
-            if lista[i] > max1:
-                max1 = lista[i]
-                max2 = lista[i + 1]
+            if abs(lista[i] - lista[i + 1]) == 1:
+                if lista[i] > max1:
+                    max1 = lista[i]
+                if lista[i + 1] > max2:
+                    max2 = lista[i + 1]
+                consecutivos_encontrados = True  # Actualiza el indicador si si existen 
+        
+            # Actualiza el número más grande dentro de toda la lista
+            if lista[i] > max_general:
+                max_general = lista[i]
 
-        return max1, max2
+        # Comprueba si el número más grande es de la pareja de consecutivos
+        if lista[-1] > max_general:
+            max_general = lista[-1]
 
+        if consecutivos_encontrados:
+            return max1, max2, max_general
+        else:
+            return "No hay números consecutivos en la lista."
 
-    # lista = [2, 5, 7, 9,9, 3, 8, 6,504,504,672,675,14523,5416,125745,1454571,15151515,15151515]
-    #lista = [2, 5, 7, 9,9, 3, 8, 6,15,10]
-    lista = [2, 5, 7, 9,12,20,45]
-    resultado = numeros_consecutivos(lista)
-    if resultado:
-        print(f"Los dos números más grandes consecutivos son: {resultado[0]} y {resultado[1]}")
+    #lista = [ 9, 12, 20, 45, 46, 280, 146, 147, 148, 283, 150, 151, 589]
+    #lista = [ 9, 12, 20, 45, 46, 589]
+    lista = [ 9, 12, 20, 45, 46, 589, 591, 592]
+    resultado = dos_numeros_mas_grandes_consecutivos(lista)
+    if isinstance(resultado, str):
+        print(resultado)  # Imprime el mensaje error si no hay números consecutivos
     else:
-        print("La lista es demasiado corta para encontrar dos números consecutivos.")
+        max1, max2, max_general = resultado
+        print(f"Los dos números más grandes consecutivos son: {max1} y {max2}")
+        print(f"El número más grande de la lista es: {max_general}")
+
 
 
     '''
