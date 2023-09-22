@@ -129,21 +129,28 @@ class MathSolver:
       6.Dos numeros grandes consecutivos de una lista
     '''
     @staticmethod
-    def encontrar_consecutivos(lista):
-     if len(lista) < 2:
-        return "La lista debe tener al menos dos elementos"
+    def numeros_consecutivos(lista):
+        if len(lista) < 2:
+             return None
 
-     max1 = max(lista[0], lista[1])
-     max2 = min(lista[0], lista[1])
+        max1 = max2 = float('-inf')
 
-     for i in range(2, len(lista)):
-        if lista[i] > max1:
-            max2 = max1
-            max1 = lista[i]
-        elif lista[i] > max2 and lista[i] != max1:
-            max2 = lista[i]
+        for i in range(len(lista) - 1):
+            if lista[i] > max1:
+                max1 = lista[i]
+                max2 = lista[i + 1]
 
-     return (max1, max2)
+        return max1, max2
+
+
+    # lista = [2, 5, 7, 9,9, 3, 8, 6,504,504,672,675,14523,5416,125745,1454571,15151515,15151515]
+    #lista = [2, 5, 7, 9,9, 3, 8, 6,15,10]
+    lista = [2, 5, 7, 9,12,20,45]
+    resultado = numeros_consecutivos(lista)
+    if resultado:
+        print(f"Los dos números más grandes consecutivos son: {resultado[0]} y {resultado[1]}")
+    else:
+        print("La lista es demasiado corta para encontrar dos números consecutivos.")
 
 
     '''
