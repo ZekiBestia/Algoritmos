@@ -74,22 +74,29 @@ while True:
         lista=calcular.listaAleatorios(n,r)
         conta=calcular.contar_apariciones(lista, c)
         print(f"La lista es la siguente : {lista}")
-        print(f"El numero de apariciones es : {conta}")
+        print(f"El numero de apariciones de {c} es : {conta}")
 
     elif opcion == '6':
         # Agrega aquí tu código para encontrar dos números grandes consecutivos en una lista
         print("Función para encontrar dos números grandes consecutivos en una lista.") 
         print("Agrega la lista:")
         n=user.pedirLista()
-        conse=calcular.encontrar_consecutivos(n)
-        print(conse)
+        conse=calcular.numeros_consecutivos(n)
+        if conse:
+            print(f"Los dos números más grandes consecutivos son: {conse[0]} y {conse[1]}")
+        else:
+            print("La lista es demasiado corta para encontrar dos números consecutivos.")
 
     elif opcion == '7':
         # Agrega aquí tu código para encontrar el índice del predecesor menor en una lista de cadenas
-        print("Función para encontrar el índice del predecesor menor en una lista de cadenas.")
+        print("Función para encontrar el índice del predecesor menor en una lista de cadenas.\nEl indice comienza en 0")
+        print("Ejemplo:")
         lista=["TOMAS","BRUNO","ELIE","DAN","ZEKE"]
         iPredecesorMenor=calcular.indice_procesador_menor(lista)
+        print(f"Lista: {lista}")
         print("El indice del predecesor menor es: " + str(iPredecesorMenor))
+        print("\nAgregue la lista de cadenas separadas por coma: ")
+        
 
     elif opcion == '8':
         # Agrega aquí tu código para calcular la suma de una serie
