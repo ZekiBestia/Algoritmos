@@ -126,14 +126,26 @@ class MathSolver:
         return lista
     
     
-    def encontrar_numeros_consecutivos(lista, umbral):
-     numeros_consecutivos = []
+    def encontrar_consecutivos(lista):
+    if len(lista) < 2:
+        return "La lista debe tener al menos dos elementos"
+    
+    max1 = max(lista[0], lista[1])
+    max2 = min(lista[0], lista[1])
 
-     for i in range(len(lista) - 1):
-        if lista[i] > umbral and lista[i + 1] > umbral:
-            numeros_consecutivos.append((lista[i], lista[i + 1]))
+    for i in range(2, len(lista)):
+        if lista[i] > max1:
+            max2 = max1
+            max1 = lista[i]
+        elif lista[i] > max2 and lista[i] != max1:
+            max2 = lista[i]
 
-     return numeros_consecutivos
+    return (max1, max2)
+
+# Ejemplo de uso:
+mi_lista = [3, 6, 8, 2, 10, 15, 9,100,200,201,201,201,203,203,158,15,16]
+resultado = encontrar_consecutivos(mi_lista)
+print("Los dos números consecutivos más grandes son:", resultado)
 
     '''
     7.Regresar el indice del predecesor menor de una lista
