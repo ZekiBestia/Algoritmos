@@ -5,16 +5,6 @@ Created on Sat Sep 16 11:13:05 2023
 
 @author: zekibestia
 """
-# Permutaciones
-'''
- PERMUTACIONES
-     nPr= n!/(n-r)!
-     Organizar elementos en orden
- COMBINACIONES
-     Seleccionar objetos de un grupo y el orden no importa
-     nCr= nPr/r!
-     
-'''
 from itertools import permutations, combinations
 import numpy as np
 import math
@@ -157,20 +147,6 @@ class MathSolver:
             return max1, max2, max_general
         else:
             return "No hay números consecutivos en la lista."
-
-    #lista = [ 9, 12, 20, 45, 46, 280, 146, 147, 148, 283, 150, 151, 589]
-    #lista = [ 9, 12, 20, 45, 46, 589]
-    lista = [ 9, 12, 20, 45, 46, 589, 591, 592]
-    resultado = dos_numeros_mas_grandes_consecutivos(lista)
-    if isinstance(resultado, str):
-        print(resultado)  # Imprime el mensaje error si no hay números consecutivos
-    else:
-        max1, max2, max_general = resultado
-        print(f"Los dos números más grandes consecutivos son: {max1} y {max2}")
-        print(f"El número más grande dentro de la lista es: {max_general}")
-
-
-
     '''
     7.Regresar el indice del predecesor menor de una lista
     de cadenas
@@ -216,7 +192,7 @@ class MathSolver:
 
          max = 0
          for i in range(n):
-             for j in range(i):  # Cambiar i-1 a i
+             for j in range(i):
                  if suma[j][i] > max:
                      max = suma[j][i]
 
@@ -258,21 +234,19 @@ class MathSolver:
             if suma > max:
                 max = suma
         return max
-
+    '''
+     PERMUTACIONES
+     nPr= n!/(n-r)!
+     Organizar elementos en orden
+    '''
+   
     @staticmethod
     def nPr(n, r):
         factorial_n = MathSolver.calcularFactorial(n)
         factorial_temp = MathSolver.calcularFactorial(n - r)
         permutacion = factorial_n / factorial_temp
         return permutacion
-
-    @staticmethod
-    def nCr(n, r):
-        permu = MathSolver.nPr(n, r)
-        factorial_n = MathSolver.calcularFactorial(r)
-        combinacion = permu / factorial_n
-        return combinacion
-
+    
     @staticmethod
     def generarPermuta(n, r, permuta=[]):
         if len(permuta) == r:
@@ -282,7 +256,7 @@ class MathSolver:
                 if i not in permuta:
                     permuta.append(i)
                     yield from MathSolver.generarPermuta(n, r, permuta)
-                    permuta.pop()
+                    permuta.pop()    
     @staticmethod  
     def generarPerLibreria(n,r):
         # Genera las permutaciones con la libreria permutations
@@ -291,6 +265,21 @@ class MathSolver:
             print(i)
         print()
         return permuta
+    
+    
+    '''
+    COMBINACIONES
+    Seleccionar objetos de un grupo y el orden no importa
+    nCr= nPr/r!
+    '''
+    
+    @staticmethod
+    def nCr(n, r):
+        permu = MathSolver.nPr(n, r)
+        factorial_n = MathSolver.calcularFactorial(r)
+        combinacion = permu / factorial_n
+        return combinacion
+
     @staticmethod
     def generarCombina(n, r, combi=[], i=0):
         if len(combi) == r:

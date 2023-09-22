@@ -80,12 +80,15 @@ while True:
         # Agrega aquí tu código para encontrar dos números grandes consecutivos en una lista
         print("Función para encontrar dos números grandes consecutivos en una lista.") 
         print("Agrega la lista:")
-        n=user.pedirLista()
-        conse=calcular.numeros_consecutivos(n)
-        if conse:
-            print(f"Los dos números más grandes consecutivos son: {conse[0]} y {conse[1]}")
+        num=user.pedirListaN()
+        print(num)
+        conse=calcular.dos_numeros_mas_grandes_consecutivos(num)
+        if isinstance(conse, str):
+                print(conse)  # Imprime el mensaje error si no hay números consecutivos
         else:
-            print("La lista es demasiado corta para encontrar dos números consecutivos.")
+                max1, max2, max_general=conse
+                print(f"Los dos números más grandes consecutivos son: {max1} y {max2}")
+                print(f"El número más grande dentro de la lista es: {max_general}")
 
     elif opcion == '7':
         # Agrega aquí tu código para encontrar el índice del predecesor menor en una lista de cadenas
@@ -95,13 +98,22 @@ while True:
         iPredecesorMenor=calcular.indice_procesador_menor(lista)
         print(f"Lista: {lista}")
         print("El indice del predecesor menor es: " + str(iPredecesorMenor))
-        print("\nAgregue la lista de cadenas separadas por coma: ")
-        
+        n=user.pedirLista()
+        print(n)
+        prede=calcular.indice_procesador_menor(n)
+        print("El indice del predecesor menor es: "+str(prede))
 
     elif opcion == '8':
         # Agrega aquí tu código para calcular la suma de una serie
         print("Función para calcular la suma de una serie.")
-        
+        s=user.pedirListaN()
+        print(f"Lista de numeros: {s}")
+        n=len(s)
+        #v1=calcular.maxSumaV1(s, n)
+        #v2=calcular.maxSumaV2(s, n)
+        v3=calcular.maxSumaV3(s, n)
+        #print(f"Suma maxima de numeros consecutivos\nVersion1: {v1}\nVersion2: {v2}\nVersion3: {v3}")
+        print(v3)
     elif opcion == '9':
         print("Permutaciones")
         n,r=user.pedirNyR()

@@ -69,7 +69,13 @@ class UserInterface:
             print("Error: Asegúrese de ingresar datos válidos.")
  @staticmethod
  def pedirLista():
-     entrada = input("Ingrese la lista de elementos separados por comas: ")
+     entrada = input("Ingrese la lista de cadenas de esta forma: TOMAS,BRUNO,ELIE,DAN : ")
+     n = entrada.split(",")
+     n = [(elem.strip()) for elem in n]
+     return n
+ @staticmethod
+ def pedirListaN():
+     entrada = input("Ingrese la lista de numeros separados por coma:  ")
      n = entrada.split(",")
      n = [int(elem.strip()) for elem in n]
      return n
