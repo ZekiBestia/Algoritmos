@@ -78,7 +78,11 @@ while True:
 
     elif opcion == '6':
         # Agrega aquí tu código para encontrar dos números grandes consecutivos en una lista
-        print("Función para encontrar dos números grandes consecutivos en una lista.")    
+        print("Función para encontrar dos números grandes consecutivos en una lista.") 
+        print("Agrega la lista:")
+        n=user.pedirLista()
+        conse=calcular.encontrar_consecutivos(n)
+        print(conse)
 
     elif opcion == '7':
         # Agrega aquí tu código para encontrar el índice del predecesor menor en una lista de cadenas

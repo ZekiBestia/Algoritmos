@@ -67,5 +67,10 @@ class UserInterface:
             return n, r
         except ValueError:
             print("Error: Asegúrese de ingresar datos válidos.")
-
+ @staticmethod
+ def pedirLista():
+     entrada = input("Ingrese la lista de elementos separados por comas: ")
+     n = entrada.split(",")
+     n = [int(elem.strip()) for elem in n]
+     return n
         

@@ -125,15 +125,26 @@ class MathSolver:
             lista[i] = random.randint(1,r)
         return lista
     
-    
-    def encontrar_numeros_consecutivos(lista, umbral):
-     numeros_consecutivos = []
+    '''
+      6.Dos numeros grandes consecutivos de una lista
+    '''
+    @staticmethod
+    def encontrar_consecutivos(lista):
+     if len(lista) < 2:
+        return "La lista debe tener al menos dos elementos"
 
-     for i in range(len(lista) - 1):
-        if lista[i] > umbral and lista[i + 1] > umbral:
-            numeros_consecutivos.append((lista[i], lista[i + 1]))
+     max1 = max(lista[0], lista[1])
+     max2 = min(lista[0], lista[1])
 
-     return numeros_consecutivos
+     for i in range(2, len(lista)):
+        if lista[i] > max1:
+            max2 = max1
+            max1 = lista[i]
+        elif lista[i] > max2 and lista[i] != max1:
+            max2 = lista[i]
+
+     return (max1, max2)
+
 
     '''
     7.Regresar el indice del predecesor menor de una lista
@@ -163,6 +174,65 @@ class MathSolver:
             else:
                 print("La cadena no puede estar vacía. Inténtalo de nuevo.")
                 
+    '''
+    8. Suma de series
+     '''
+    '''
+     Version 1
+     '''
+    @staticmethod
+    def maxSumaV1(s, n):
+         suma = [[0 for _ in range(n)] for _ in range(n)]
+         for i in range(n):
+             for j in range(i):
+                 suma[j][i] = suma[j][i - 1] + s[i]   
+
+             suma[i][i] = s[i]
+
+         max = 0
+         for i in range(n):
+             for j in range(i):  # Cambiar i-1 a i
+                 if suma[j][i] > max:
+                     max = suma[j][i]
+
+         return max
+    '''
+     Version 2
+     '''
+     
+    @staticmethod 
+    def maxSumaV2(s, n):
+        max = 0
+        suma = [[0 for _ in range(n)] for _ in range(n)]
+
+        for i in range(n):
+            for j in range(i):
+                suma[j][i] = suma[j][i - 1] + s[i]
+                if suma[j][i] > max:
+                    max = suma[j][i]
+            
+            suma[i][i] = s[i]
+            if suma[i][i] > max:
+                max = suma[i][i]
+
+        return max
+    
+    '''
+    Version 3
+    '''
+    
+    @staticmethod 
+    def maxSumaV3(s,n):
+        max = 0
+        suma = 0
+        for i in s:
+            if suma + i > 0:
+                suma += i
+            else:
+                suma = 0
+            if suma > max:
+                max = suma
+        return max
 
     @staticmethod
     def nPr(n, r):
@@ -211,47 +281,7 @@ class MathSolver:
     def generarCombLibreria(n,r):
         combiL=list(combinations(n,r))
         print(combiL)
+    
         
-    '''
-    ??. Encontra el máximo y el mínimo de una lista 
-    
-    def max_minV1():
-        n = int(input("Ingrese la cantidad de números en la lista: "))
-        lista = []
-
-        for i in range(n):
-         num = int(input(f"Ingrese el número {i + 1}: "))
-         lista.append(num)
-
-        maximo = lista[0]
-        minimo = lista[0]   
-
-        for i in range(1, len(lista)):
-            if lista[i] > maximo:
-                maximo = lista[i]
-            if lista[i] < minimo:
-                minimo = lista[i]
-        print(f"El número máximo es: {maximo}")
-        print(f"El número mínimo es: {minimo}")
-
-    max_minV1()
-
-    
-    ??. Encontra el valor de la suma maxima de dos valores consecutivos V1
-
-    def max_sum_consecutive(nums):
-    
-        max_sum = current_sum = nums[0]
-        for i in range(1, len(nums)):
-            current_sum += nums[i]
-            if current_sum > max_sum:
-                max_sum = current_sum
-        current_sum -= nums[i-1]
-        return max_sum
-    input_values = input("Ingrese los valores de la lista separados por espacios: ")
-    nums = [int(x) for x in input_values.split()]
-    result = max_sum_consecutive(nums)
-    print("La suma máxima de elementos consecutivos es:", result)
         
-    '''
         
