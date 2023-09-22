@@ -167,7 +167,7 @@ class MathSolver:
     else:
         max1, max2, max_general = resultado
         print(f"Los dos números más grandes consecutivos son: {max1} y {max2}")
-        print(f"El número más grande de la lista es: {max_general}")
+        print(f"El número más grande dentro de la lista es: {max_general}")
 
 
 
