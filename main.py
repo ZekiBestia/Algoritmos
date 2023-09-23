@@ -109,10 +109,10 @@ while True:
         s=user.pedirListaN()
         print(f"Lista de numeros: {s}")
         n=len(s)
-        #v1=calcular.maxSumaV1(s, n)
-        #v2=calcular.maxSumaV2(s, n)
+        v1=calcular.maxSumaV1(s, n)
+        v2=calcular.maxSumaV2(s, n)
         v3=calcular.maxSumaV3(s, n)
-        #print(f"Suma maxima de numeros consecutivos\nVersion1: {v1}\nVersion2: {v2}\nVersion3: {v3}")
+        print(f"Suma maxima de numeros consecutivos\nVersion1: {v1}\nVersion2: {v2}\nVersion3: {v3}")
         print(v3)
     elif opcion == '9':
         print("Permutaciones")
